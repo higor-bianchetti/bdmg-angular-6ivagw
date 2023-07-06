@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from '../app.service';
@@ -46,10 +46,10 @@ export class CepFormComponent {
       bairro: [cep.bairro],
       localidade: [cep.localidade],
       uf: [cep.uf],
-      ibge: [cep.ibge],
+      ibge: new FormControl({ value: cep.ibge, disabled: true }),
       gia: [cep.gia],
       ddd: [cep.ddd],
-      siafi: [cep.siafi],
+      siafi: new FormControl({ value: cep.siafi, disabled: true }),
     });
   }
 
