@@ -9,6 +9,7 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 import { CepFormComponent } from './cep-form/cep-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    NgxMaskModule.forRoot(),
   ],
   declarations: [
     CepFormComponent,

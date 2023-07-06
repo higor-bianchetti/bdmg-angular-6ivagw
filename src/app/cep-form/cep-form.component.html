@@ -9,7 +9,13 @@
       <div class="form-group">
         <mat-form-field>
           <mat-label>CEP</mat-label>
-          <input matInput placeholder="CEP" formControlName="cep" type="text" />
+          <input
+            matInput
+            placeholder="CEP"
+            formControlName="cep"
+            type="text"
+            mask="00000-000"
+          />
         </mat-form-field>
       </div>
 
@@ -29,6 +35,7 @@
             matInput
             placeholder="complemento"
             formControlName="complemento"
+            mask="separator.0" thousandSeparator="." separatorLimit="1000"
           />
         </mat-form-field>
 
