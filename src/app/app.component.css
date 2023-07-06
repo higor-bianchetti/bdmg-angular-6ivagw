@@ -1,3 +1,17 @@
 p {
   font-family: Lato;
 }
+
+@media (min-width: 425px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

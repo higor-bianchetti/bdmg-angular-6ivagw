@@ -1,0 +1,19 @@
+mat-card {
+  margin-top: 1rem;
+}
+
+.form {
+  padding-top: 0.5rem;
+}
+
+.form .form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 10rem;
+}
+
+.form .form-group mat-form-field {
+  width: 100%;
+  min-width: 0;
+}
