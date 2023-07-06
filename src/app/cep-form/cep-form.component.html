@@ -8,7 +8,17 @@
     <form [formGroup]="form" class="form" *ngIf="!loading">
       <div class="form-group">
         <mat-form-field>
-          <mat-label>CEP</mat-label>
+          <mat-label>
+            <span
+              *ngIf="
+                cepForm['cep'].errors && cepForm['cep'].errors['required'];
+                else cepLabel
+              "
+            >
+              O campo CEP é obrigatório
+            </span>
+            <ng-template #cepLabel>CEP</ng-template>
+          </mat-label>
           <input
             matInput
             placeholder="CEP"
@@ -21,11 +31,12 @@
 
       <div class="form-group">
         <mat-form-field>
-          <mat-label>Logradouro</mat-label>
+          <mat-label> Logradouro </mat-label>
           <input
             matInput
             placeholder="logradouro"
             formControlName="logradouro"
+            type="text"
           />
         </mat-form-field>
 
@@ -91,13 +102,18 @@
       color="warn"
       (click)="clear()"
     >
-      <mat-icon aria-hidden="false" aria-label="Example home icon"
+      <mat-icon aria-hidden="false" aria-label="Limpar localStorage"
         >cleaning_services</mat-icon
       >
       Limpar Local Storage
     </button>
-    <button mat-raised-button color="accent" (click)="onSubmit()">
-      <mat-icon aria-hidden="false" aria-label="Example home icon"
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="onSubmit()"
+      [disabled]="!form.valid"
+    >
+      <mat-icon aria-hidden="false" aria-label="Salvar no localStorage"
         >save</mat-icon
       >
       Salvar
