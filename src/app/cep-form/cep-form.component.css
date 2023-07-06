@@ -33,3 +33,17 @@ mat-card-actions {
 .container.code {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 425px) {
+  .form .form-group {
+    flex-direction: column;
+  }
+
+  mat-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    row-gap: 0.5rem;
+  }
+}
