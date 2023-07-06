@@ -3,11 +3,27 @@
 </h1>
 <div mat-dialog-content>{{ data.msg }}</div>
 <div mat-dialog-actions align="center">
-  <button
-    mat-raised-button
-    mat-dialog-close
-    [color]="data.hasError ? 'warn' : 'accent'"
-  >
-    Close
-  </button>
+  <div *ngIf="!data.confirmDialog">
+    <button
+      mat-raised-button
+      mat-dialog-close
+      [color]="data.hasError ? 'warn' : 'accent'"
+    >
+      Close
+    </button>
+  </div>
+
+  <div *ngIf="data.confirmDialog">
+    <button mat-raised-button mat-dialog-close (click)="cancel()">
+      Cancelar
+    </button>
+    <button
+      mat-raised-button
+      mat-dialog-close
+      color="warn"
+      [mat-dialog-close]="data.confirmDialog"
+    >
+      Sim
+    </button>
+  </div>
 </div>

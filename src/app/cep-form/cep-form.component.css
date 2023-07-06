@@ -21,3 +21,11 @@ mat-card {
   width: 100%;
   min-width: 0;
 }
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 1rem;
+  margin-top: -1rem;
+}

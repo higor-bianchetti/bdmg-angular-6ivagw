@@ -75,4 +75,23 @@
       </div>
     </form>
   </mat-card-content>
+  <mat-card-actions>
+    <button
+      *ngIf="localStorage"
+      mat-raised-button
+      color="warn"
+      (click)="clear()"
+    >
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >cleaning_services</mat-icon
+      >
+      Limpar Local Storage
+    </button>
+    <button mat-raised-button color="accent" (click)="onSubmit()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >save</mat-icon
+      >
+      Salvar
+    </button>
+  </mat-card-actions>
 </mat-card>

@@ -12,4 +12,16 @@ export class AppService {
   getCep() {
     return this.httpClient.get<CepModel>(this.API).pipe(take(1));
   }
+
+  getLocalStorage(id: string) {
+    return JSON.parse(window.localStorage.getItem(id));
+  }
+
+  saveLocalStorage(id: string, cep: CepModel) {
+    window.localStorage.setItem(id, JSON.stringify(cep));
+  }
+
+  deleteLocalStorage(id: string) {
+    window.localStorage.removeItem(id);
+  }
 }
