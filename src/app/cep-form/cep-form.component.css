@@ -29,3 +29,7 @@ mat-card-actions {
   gap: 1rem;
   margin-top: -1rem;
 }
+
+.container.code {
+  background-color: rgba(0, 0, 0, 0.2);
+}

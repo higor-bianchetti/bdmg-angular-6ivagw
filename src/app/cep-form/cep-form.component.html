@@ -95,3 +95,10 @@
     </button>
   </mat-card-actions>
 </mat-card>
+
+<mat-card class="container code" *ngIf="localStorage">
+  <pre>
+  {{ localStorage | json }}
+</pre
+  >
+</mat-card>

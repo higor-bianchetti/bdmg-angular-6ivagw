@@ -24,36 +24,18 @@ export class CepFormComponent {
     private snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
-    this.localStorage = this.cepService.getLocalStorage('cep');
-
-    if (!this.localStorage) {
-      this.getCep();
-    } else {
-      this.buildForm(this.localStorage);
-    }
+    this.getCep();
   }
 
   getCep() {
     this.loading = true;
+    this.localStorage = this.cepService.getLocalStorage('cep');
 
-    this.cepService.getCep().subscribe({
-      next: (_cep: CepModel) => {
-        this.loading = false;
-        this.cep = _cep;
-        this.buildForm(this.cep);
-      },
-      error: (err) => {
-        this.loading = false;
-        this.dialog.open(DialogComponent, {
-          data: {
-            confirmDialog: false,
-            hasError: true,
-            headerMsg: 'Erro',
-            msg: 'Erro ao carregar a API',
-          },
-        });
-      },
-    });
+    if (!this.localStorage) {
+      this.getCepApi();
+    } else {
+      this.buildForm(this.localStorage);
+    }
   }
 
   buildForm(cep: CepModel) {
@@ -71,8 +53,29 @@ export class CepFormComponent {
     });
   }
 
+  getCepApi() {
+    this.cepService.getCep().subscribe({
+      next: (_cep: CepModel) => {
+        this.loading = false;
+        this.buildForm(_cep);
+      },
+      error: (err) => {
+        this.loading = false;
+        this.dialog.open(DialogComponent, {
+          data: {
+            confirmDialog: false,
+            hasError: true,
+            headerMsg: 'Erro',
+            msg: 'Erro ao carregar a API',
+          },
+        });
+      },
+    });
+  }
+
   onSubmit() {
     this.cepService.saveLocalStorage('cep', this.form.value);
+    this.localStorage = this.cepService.getLocalStorage('cep');
     this.openSnackBar('Cep Salvo no localStorage', 'Ok');
   }
 
@@ -87,10 +90,11 @@ export class CepFormComponent {
     });
 
     dialogRef.afterClosed().subscribe((confirm) => {
-      if(confirm)
+      if (confirm) {
         this.cepService.deleteLocalStorage('cep');
+        this.getCep();
+      }
     });
-
   }
 
   openSnackBar(message: string, action: string) {
